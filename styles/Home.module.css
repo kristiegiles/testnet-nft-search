@@ -29,10 +29,13 @@
   }
 }
 
+.grid__item-btn{
+  margin: 12px;
+}
+
 .grid__item {
   list-style-type: none;
   border: 1px solid var(--midnight);
-  /* margin: 12px; */
   border-radius: 0.75rem;  
   transition: all 150ms cubic-bezier(.4,0,.2,1);
   text-align: left;
@@ -41,7 +44,6 @@
 }
 
 .grid__item:hover{
-  cursor: pointer;
   background: var(--marine);
   border-color: var(--marine);
   transform: scale(1.03);
@@ -99,7 +101,8 @@
 }
 
 .search__btn:hover,
-.search__btn:active{
+.search__btn:active,
+.search__btn:focus{
   background: var(--ocean);
   border-color: var(--ocean);
 }
@@ -121,7 +124,7 @@
 .search__input:focus,
 .search__btn:focus{
   outline: none;
-  border-color: var(--white);
+  border-color: var(--sky);
 }
 
 
@@ -210,7 +213,7 @@
 
 .details__collection {
   text-transform: uppercase;
-  color: #0d90e8;
+  color: var(--sky);
   margin-bottom: 7px;
   font-size: 14px;
 }

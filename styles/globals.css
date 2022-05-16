@@ -1,8 +1,8 @@
 :root{
   --white: #fff;
+  --sky: #0d90e8;
   --ocean: #065f9b;
   --marine: #044A7B;;
-  /* --marine:  #032a44; */
   --midnight: #032a44;
   --navy: #011421;
 }
@@ -54,6 +54,12 @@ a {
   display: inline-block;
 }
 
+/* todo isUsingKeyboard-specific CSS */
+/* .btn--link:focus,
+.btn--transparent:focus{
+  outline: 2px solid white;
+} */
+
 .btn--link {
   text-decoration: underline;
 }
@@ -71,9 +77,4 @@ a:active,
   display: block;
   object-fit: cover;
   aspect-ratio: 1 / 1;
-}
-
-/* todo move */
-.btn--transparent {
-  margin: 12px;
 }

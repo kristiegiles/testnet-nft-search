@@ -1,7 +1,14 @@
 import type { NextPage } from "next";
-import React, { FormEvent, ChangeEvent, useState } from "react";
+import React, {
+  FormEvent,
+  ChangeEvent,
+  useState,
+  useRef,
+  useEffect,
+} from "react";
 import Modal from "../components/modal";
 import useOpenseaAssets from "../hooks/use-opensea-assets";
+import useFirstRender from "../hooks/use-first-render";
 import styles from "../styles/home.module.css";
 import {
   truncatedEthAddress,
@@ -11,11 +18,12 @@ import FetchError from "../components/fetch-error";
 import { Nft } from "../types/nft";
 
 const Home: NextPage = () => {
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [ethAddress, setEthAddress] = useState<string | null>(null);
   const [searchInput, setSearchInput] = useState("");
   const [validationError, setValidationError] = useState("");
   const [activeNft, setActiveNft] = useState<Nft | null>(null);
-
+  const firstRender = useFirstRender();
   const { nfts, isLoading, hasFetchError } = useOpenseaAssets(ethAddress);
 
   const handleSubmit = (e: FormEvent) => {
@@ -37,6 +45,12 @@ const Home: NextPage = () => {
     setActiveNft(null);
   };
 
+  useEffect(() => {
+    if (firstRender || validationError) {
+      searchInputRef.current && searchInputRef.current.focus();
+    }
+  }, [firstRender, validationError]);
+
   return (
     <>
       <header className={`${styles.container} ${styles.header}`}>
@@ -47,6 +61,7 @@ const Home: NextPage = () => {
           onSubmit={handleSubmit}
         >
           <input
+            ref={searchInputRef}
             className={styles.search__input}
             type="text"
             name="search"
@@ -77,7 +92,7 @@ const Home: NextPage = () => {
         <div className={styles.grid}>
           {nfts.map((nft: Nft) => (
             <button
-              className="btn--transparent"
+              className={`btn--transparent ${styles["grid__item-btn"]}`}
               onClick={() => setActiveNft(nft)}
               key={nft.id}
             >
