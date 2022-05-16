@@ -1,16 +1,79 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+:root{
+  --white: #fff;
+  --ocean: #065f9b;
+  --marine: #044A7B;;
+  /* --marine:  #032a44; */
+  --midnight: #032a44;
+  --navy: #011421;
 }
 
 * {
   box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  -webkit-font-smoothing: auto;
+  letter-spacing: 0.01em;
+  width: 100%;
+  height: 100%;
+  line-height: 1.2;
+}
+
+body.has-opened-modal{
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+.btn--link,
+.btn--transparent,
+.btn--link:hover,
+.btn--link:visited,
+.btn--link:active {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+  color: var(--white);
+  cursor: pointer;
+  line-height: 1.2;
+  display: inline-block;
+}
+
+.btn--link {
+  text-decoration: underline;
+}
+
+a:hover,
+a:active,
+.btn--link:hover,
+.btn--link:active{
+  color: #ccc;
+}
+
+.img--cover {
+  width:100%; 
+  height:100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+/* todo move */
+.btn--transparent {
+  margin: 12px;
 }
