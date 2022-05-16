@@ -10,6 +10,7 @@
     "react/no-array-index-key": "warn",
     "import/extensions": "warn",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
-    "consistent-return": "warn"
+    "consistent-return": "warn",
+    "no-unused-expressions": "warn"
   }
 }
