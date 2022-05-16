@@ -11,12 +11,12 @@ import FetchError from "../components/fetch-error";
 import { Nft } from "../types/nft";
 
 const Home: NextPage = () => {
-  const [ethAddress, setEthAddress] = useState("");
+  const [ethAddress, setEthAddress] = useState<string | null>(null);
   const [searchInput, setSearchInput] = useState("");
   const [validationError, setValidationError] = useState("");
   const [activeNft, setActiveNft] = useState<Nft | null>(null);
 
-  const { nfts, isLoading, fetchError } = useOpenseaAssets(ethAddress);
+  const { nfts, isLoading, hasFetchError } = useOpenseaAssets(ethAddress);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -71,8 +71,8 @@ const Home: NextPage = () => {
       <main>
         <div className={styles.container}>
           {isLoading && "Loading..."}
-          {fetchError && <FetchError />}
-          {!isLoading && !fetchError && `${nfts.length} items`}
+          {hasFetchError && <FetchError />}
+          {!isLoading && !hasFetchError && `${nfts.length} items`}
         </div>
         <div className={styles.grid}>
           {nfts.map((nft: Nft) => (
